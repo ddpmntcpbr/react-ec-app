@@ -1,5 +1,5 @@
 export const SIGN_IN = "SIGN_IN";
-export const signInAction = {userState} => {
+export const signInAction = (userState) => {
   return {
     type: "SIGN_IN",
     payload: {
