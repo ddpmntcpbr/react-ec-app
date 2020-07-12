@@ -1,7 +1,10 @@
-import React,{useState,useCallback} from "react";
-import {PrimaryButton,SelectBox,TextInput} from "../components/UIkit";
+import React,{ useState, useCallback } from "react";
+import { PrimaryButton, SelectBox, TextInput } from "../components/UIkit";
+import { useDispatch } from "react-redux";
+import { saveProduct } from "../reducks/products/operations";
 
 const ProductEdit = () => {
+  const dispatch = useDispatch();
 
   const [name, setName] = useState(""),
         [description, setDescription] = useState(""),
@@ -60,7 +63,7 @@ const ProductEdit = () => {
       <div className="center">
         <PrimaryButton
           label={"商品情報を保存"}
-          onClick={() => {console.log('Clicked!')}}
+          onClick={() => dispatch(saveProduct(name, description, category, gender, price))}
         />
       </div>
     </section>
