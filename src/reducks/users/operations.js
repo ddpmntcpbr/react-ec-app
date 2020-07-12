@@ -1,5 +1,5 @@
 import { signInAction,signOutAction } from "./actions";
-import {push} from "connected-react-router";
+import { push } from "connected-react-router";
 import {auth, db, FirebaseTimestamp} from "../../firebase/index"
 
 export const listenAuthState = () => {
@@ -18,8 +18,6 @@ export const listenAuthState = () => {
               uid: uid,
               username: data.username
             }))
-
-            dispatch(push("/"))
           })
       } else {
         dispatch(push("/signin"))
