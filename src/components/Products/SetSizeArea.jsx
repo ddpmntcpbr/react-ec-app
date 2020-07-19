@@ -81,6 +81,9 @@ const SetSizeArea = (props) => {
             onChange={inputQuantity} rows={1} value={quantity} type={"number"}
           />
         </div>
+        <IconButton className={classes.checkIcon} >
+          <CheckCircleIcon/>
+        </IconButton>
       </TableContainer>
     </div>
   )
