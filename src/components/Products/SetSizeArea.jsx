@@ -38,6 +38,41 @@ const SetSizeArea = (props) => {
     setQuantity(event.target.value)
   },[setQuantity]);
 
+  const addSize = (index, size, quantity) => {
+    if (size === "" || quantity === "" ) {
+      return false
+    } else {
+      if (index === props.sizes.length) {
+        props.setSizes(prevState => [...prevState, {size:size, quantity:quantity}])
+        setIndex(index + 1)
+        setSize("")
+        setQuantity(0)
+      } else {
+        const newSizes = props.sizes
+        newSizes[index] = {size:size, quantity:quantity}
+        props.setSizes(newSizes)
+        setIndex(newSizes.length)
+        setSize("")
+        setQuantity(0)
+      }
+    }
+  };
+
+  const editSize = (index,size,quantity) => {
+    setIndex(index);
+    setSize(size);
+    setQuantity(quantity);
+  }
+
+  const deleteSize = (deleteIndex) => {
+    const newSizes = props.sizes.filter((item,i) => i !== deleteIndex);
+    props.setSizes(newSizes);
+  }
+
+  const memoIndex = useMemo(() => {
+    setIndex(props.sizes.length)
+  }, [props.sizes.length])
+
   return (
     <div>
       <TableContainer component={Paper}>
@@ -52,17 +87,17 @@ const SetSizeArea = (props) => {
           </TableHead>
           <TableBody >
             { props.sizes.length > 0 && (
-              props.sizes.map((item,index) => (
+              props.sizes.map((item,i) => (
                 <TableRow key={item.size}>
                   <TableCell>{item.size}</TableCell>
                   <TableCell>{item.quantity}</TableCell>
                   <TableCell>
-                    <IconButton className={classes.iconCell}>
+                    <IconButton className={classes.iconCell} onClick={() => editSize(i,item.size,item.quantity)}>
                       <EditIcon />
                     </IconButton>
                   </TableCell>
                   <TableCell>
-                    <IconButton className={classes.iconCell}>
+                    <IconButton className={classes.iconCell} onClick={() => deleteSize(i)}>
                       <DeleteIcon />
                     </IconButton>
                   </TableCell>
@@ -81,7 +116,7 @@ const SetSizeArea = (props) => {
             onChange={inputQuantity} rows={1} value={quantity} type={"number"}
           />
         </div>
-        <IconButton className={classes.checkIcon} >
+        <IconButton className={classes.checkIcon} onClick={() => addSize(index, size,quantity)}>
           <CheckCircleIcon/>
         </IconButton>
       </TableContainer>
