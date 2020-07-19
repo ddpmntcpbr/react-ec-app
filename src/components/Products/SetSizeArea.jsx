@@ -73,6 +73,7 @@ const SetSizeArea = (props) => {
     setIndex(props.sizes.length)
   }, [props.sizes.length])
 
+
   return (
     <div>
       <TableContainer component={Paper}>
@@ -112,7 +113,7 @@ const SetSizeArea = (props) => {
             onChange={inputSize} rows={1} value={size} type={"text"}
           />
           <TextInput
-            fullWidth={false} label={"サイズ"} multiline={false} requires={true}
+            fullWidth={false} label={"数量"} multiline={false} requires={true}
             onChange={inputQuantity} rows={1} value={quantity} type={"number"}
           />
         </div>
