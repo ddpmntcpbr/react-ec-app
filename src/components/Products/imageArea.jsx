@@ -3,7 +3,7 @@ import IconButton from "@material-ui/core/IconButton";
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 import { makeStyles } from "@material-ui/core";
 import {storage} from "../../firebase/index";
-import ImagePreview from "./imagePreview"
+import ImagePreview from "./ImagePreview"
 
 const useStyles = makeStyles({
   icon: {
@@ -13,6 +13,7 @@ const useStyles = makeStyles({
 })
 
 const ImageArea = (props) => {
+
   const classes = useStyles();
 
   const deleteImage = useCallback( async (id) => {
@@ -22,7 +23,8 @@ const ImageArea = (props) => {
     } else {
       const newImages = props.images.filter(image => image.id !== id)
       props.setImages(newImages);
-      return storage.ref("image").child(id).delete()
+      console.log(id)
+      return storage.ref("images").child(id).delete()
     }
   }, [props.images])
 

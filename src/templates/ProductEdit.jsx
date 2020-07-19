@@ -2,7 +2,7 @@ import React,{ useState, useCallback } from "react";
 import { PrimaryButton, SelectBox, TextInput } from "../components/UIkit";
 import { useDispatch } from "react-redux";
 import { saveProduct } from "../reducks/products/operations";
-import ImageArea from "../components/Products/imageArea";
+import ImageArea from "../components/Products/ImageArea";
 
 const ProductEdit = () => {
   const dispatch = useDispatch();
