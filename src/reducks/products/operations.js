@@ -1,9 +1,10 @@
+import { fetchProductsAction } from "./actions";
 import {db, FirebaseTimestamp} from "../../firebase";
 import { push } from "connected-react-router";
 
 const productsRef = db.collection("products")
 
-export const fetchProduct = () => {
+export const fetchProducts = () => {
   return async (dispatch) => {
     productsRef.orderBy("updated_at","desc").get()
       .then(snapshots => {
