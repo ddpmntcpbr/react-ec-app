@@ -1,6 +1,14 @@
 import React from "react";
+import {ProductCard} from "../components/Products";
+import { useDispatch } from "react-redux";
 
 const ProductList = () => {
+  const dispatch = useDispatch();
+
+  useEffect (() => {
+    dispatch(fetchProducts())
+  },[]);
+
   return (
     <section className="c-section-wrapin">
       <div className="p-grid__row">
