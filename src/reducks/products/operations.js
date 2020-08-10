@@ -4,6 +4,17 @@ import { push } from "connected-react-router";
 
 const productsRef = db.collection("products")
 
+export const deleteProduct = (id) => {
+  return async(dispatch) => {
+    productsRef.doc(id).delete()
+      .then(() => {
+        const prevProducts = getState().products.list;
+        const nextProducts = prevProducts.filter(product => product.id !== id)
+        dispatch(deleteProductAction(nextProducts))
+      })
+  }
+}
+
 export const fetchProducts = () => {
   return async (dispatch) => {
     productsRef.orderBy("updated_at","desc").get()

@@ -92,7 +92,12 @@ const ProductCard = (props) => {
           >
             編集する
           </MenuItem>
-          <MenuItem>
+          <MenuItem
+            onClick={() => {
+              dispatch(deleteProduct(props.id))
+              handleClose()
+            }}
+          >
             削除する
           </MenuItem>
         </Menu>
