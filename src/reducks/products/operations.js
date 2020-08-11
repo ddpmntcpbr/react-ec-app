@@ -1,11 +1,11 @@
-import { fetchProductsAction } from "./actions";
+import { fetchProductsAction,deleteProductAction } from "./actions";
 import {db, FirebaseTimestamp} from "../../firebase";
 import { push } from "connected-react-router";
 
 const productsRef = db.collection("products")
 
 export const deleteProduct = (id) => {
-  return async(dispatch) => {
+  return async(dispatch, getState) => {
     productsRef.doc(id).delete()
       .then(() => {
         const prevProducts = getState().products.list;

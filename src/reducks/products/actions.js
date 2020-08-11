@@ -1,5 +1,5 @@
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
-export const deleteProductsAction = (products) => {
+export const deleteProductAction = (products) => {
   return {
     type: "DELETE_PRODUCT",
     payload: products

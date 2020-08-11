@@ -11,7 +11,7 @@ const Router = () => {
       <Route exact path={"/signin/reset"} component={Reset} />
 
       <Auth>
-        <Route exact path={"(/)?"} component={ProductList} />
+        <Route exact path={"(/)?"} component={ProductList} /> {/* 修正 */}
         <Route path={"/product/edit(/:id)?"} component={ProductEdit} />
       </Auth>
     </Switch>
