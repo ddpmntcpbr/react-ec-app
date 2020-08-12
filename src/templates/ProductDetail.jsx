@@ -4,6 +4,7 @@ import {db} from "../firebase"
 import { makeStyles } from "@material-ui/core";
 import HTMLReactParser from "html-react-parser"
 import {ImageSwiper} from "../components/Products"
+import {SizeTable} from "../components/Products"
 
 const useStyles = makeStyles((theme)=>({
   sliderBox: {
@@ -71,6 +72,7 @@ const ProductDetail = () => {
             <h2 className="u-text__headline">{product.name}</h2>
             <p className={classes.price}>{product.price.toLocaleString()}</p>
             <div className="module-spacer--small"></div>
+            <SizeTable sizes={product.sizes}/>
             <div className="module-spacer--small"></div>
             <p>{returnCodeToBr(product.description)}</p>
           </div>
