@@ -3,29 +3,31 @@ import {useSelector} from "react-redux"
 import {db} from "../firebase"
 import { makeStyles } from "@material-ui/core";
 import HTMLReactParser from "html-react-parser"
+import {ImageSwiper} from "../components/Products"
 
 const useStyles = makeStyles((theme)=>({
   sliderBox: {
-    [theme.breakpoints.down("sm")]: {
-      margin: "0 auto 24px auto",
+    [theme.breakpoints.down('sm')]: {
+      margin: '0 auto 24px auto',
       height: 320,
       width: 320
     },
-    [theme.breakpoints.up("sm")]:{
-      margin: "0 auto",
+    [theme.breakpoints.up('sm')]:{
+      margin: '0 auto',
       height: 400,
       width: 400
     }
   },
   detail: {
-    [theme.breakpoints.down("sm")]: {
-      margin: "0 auto 16px auto",
+    textAlign: 'left',
+    [theme.breakpoints.down('sm')]: {
+      margin: '0 auto 16px auto',
       height: "auto",
       width: 320
     },
-    [theme.breakpoints.up("sm")]:{
-      margin: "0 auto",
-      height: "auth",
+    [theme.breakpoints.up('sm')]:{
+      margin: '0 auto',
+      height: 'auto',
       width: 400
     }
   },
@@ -44,11 +46,11 @@ const returnCodeToBr = (text) => {
 
 const ProductDetail = () => {
   const classes = useStyles();
-  const selector = useSelector((state)=>state);
+  const selector = useSelector(state=>state);
   const path = selector.router.location.pathname;
   const id = path.split("/product/")[1];
 
-  const [product,setProduct] = useState();
+  const [product,setProduct] = useState(null);
 
   useEffect(()=>{
     db.collection("products").doc(id).get()
@@ -63,7 +65,7 @@ const ProductDetail = () => {
       {product && (
         <div className="p-grid__row" >
           <div className={classes.sliderBox}>
-
+            <ImageSwiper images={product.images} />
           </div>
           <div className={classes.detail}>
             <h2 className="u-text__headline">{product.name}</h2>
