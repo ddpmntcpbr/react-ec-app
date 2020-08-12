@@ -11,7 +11,7 @@ const App = () => {
       <main className="c-main">
           <Router />
       </main>
-   </>
+    </>
   )
 }
 
