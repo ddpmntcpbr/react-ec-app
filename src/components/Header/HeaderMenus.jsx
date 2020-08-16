@@ -8,6 +8,7 @@ import { getProductsInCart, getUserId } from "../../reducks/users/selectors";
 import {useSelector, useDispatch} from "react-redux";
 import {db} from "../../firebase";
 import {fetchProductsInCart} from  "../../reducks/users/operations";
+import {push} from "connected-react-router";
 
 const HeaderMenu = (props) => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const HeaderMenu = (props) => {
         snapshots.docChanges().forEach(change => {
           const product = change.doc.data();
           const changeType = change.type
-          console.log({商品名: product.name, サイズ: product.size, changeType: changeType})
+          // console.log({商品名: product.name, サイズ: product.size, changeType: changeType})
 
         switch (changeType) {
           case 'added':
@@ -49,7 +50,7 @@ const HeaderMenu = (props) => {
 
   return (
     <>
-      <IconButton>
+      <IconButton onClick={() => dispatch(push("/cart"))}>
         <Badge badgeContent={productsInCart.length} color="secondary">
           <ShoppingCartIcon />
         </Badge>
