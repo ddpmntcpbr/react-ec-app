@@ -45,6 +45,9 @@ export const listenAuthState = () => {
         db.collection("users").doc(uid).get()
           .then(snapshot => {
             const data = snapshot.data()
+            if (!data) {
+              throw new Error('ユーザーデータが存在しません。')
+            }
 
             dispatch(signInAction({
               isSignedIn: true,
