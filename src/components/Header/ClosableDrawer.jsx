@@ -59,8 +59,8 @@ const ClosableDrawer = (props) => {
 
   const [filters, setFilters] = useState([
     {func: selectMenu, label:"すべて", id:"all", value:"/"},
-    {func: selectMenu, label:"メンズ", id:"all", value:"/?gender=male"},
-    {func: selectMenu, label:"レディース", id:"all", value:"/?gender=female"}
+    {func: selectMenu, label:"メンズ", id:"male", value:"/?gender=male"},
+    {func: selectMenu, label:"レディース", id:"female", value:"/?gender=female"}
   ]);
 
   const menus = [
