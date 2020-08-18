@@ -69,7 +69,7 @@ const ProductEdit = () => {
         })
       })
       setCategories(list)
-    })
+    },[])
 
     // db.collection("genders").orderBy("order","asc").get()
     // .then(snapshots => {
